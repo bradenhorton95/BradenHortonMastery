@@ -34,22 +34,23 @@ public class ManagerView extends State{
     // a space in it. I havent found the programming remedy to this yet. Ive tried switching to nextLine and it continued skipping
     void update(){
            Scanner s = new Scanner(System.in);
-        String input = s.next();
+        String input = s.nextLine();
         switch(input){
             case "1":
                 System.out.println("Enter the name of the employee");
                 Scanner i = new Scanner(System.in);
-               String empName = i.next();
+               String empName = i.nextLine();
                 
                 System.out.println("Enter employee's phone number");
                
-                String empPhone = i.next();
+                String empPhone = i.nextLine();
                 System.out.println("Enter employee's address");
-                String empAddress = i.next();
+                String empAddress = i.nextLine();
                 System.out.println("Is this employee a manager? Enter true or false");
                 boolean mng = s.nextBoolean();
+                s.nextLine();
                 System.out.println("Enter the employee's hire date");
-                String hireDate = s.next();
+                String hireDate = s.nextLine();
                 System.out.println("Enter the employee's ID number");
                 int idNum = s.nextInt();
                 System.out.println("Enter the employee's salary");
