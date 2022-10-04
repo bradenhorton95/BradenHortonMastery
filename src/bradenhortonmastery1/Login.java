@@ -127,6 +127,7 @@ public class Login extends State {
                          System.out.println("INVALID PASSWORD FORMAT");
                         System.out.println("You must you atleast one upper case character and one special character");
                         passUp = false;
+                        special = false;
                         p1 = t.nextLine();
                        
                     }

@@ -13,7 +13,26 @@ public class Customer extends Person {
     public String password;
     public Customer(){
         super();
+ 
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
         loginName = "Default";
         password = "Default";
     }
