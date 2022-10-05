@@ -6,6 +6,7 @@ package bradenhortonmastery1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.*;
@@ -158,18 +159,20 @@ public class Login extends State   {
     void load(){
         
         try{
-            
-            FileReader fr = new FileReader("users.txt");
+            File file = new File("users.txt");
+            FileReader fr = new FileReader(file);
             BufferedReader ReadFile = new BufferedReader(fr);
-            
-          while(ReadFile.readLine() != null){
-            String line = ReadFile.readLine();
-            String[] members = line.split(",");
+           String line = "";
+           String[] members;
+          while((line = ReadFile.readLine()) != null){
+             
+            members = line.split(",");
             users.add(new Customer(members[0], members[1], members[2], members[3], members[4]));
+             line = ReadFile.readLine();
            }
+       
+          ReadFile.close();
           fr.close();
-            ReadFile.close();
-            
             
         }
         catch(Exception e){
@@ -181,7 +184,8 @@ public class Login extends State   {
     void save(){
         
         try {
-        FileWriter fw = new FileWriter("users.txt", true);
+            File file = new File("Users.txt");
+        FileWriter fw = new FileWriter(file);
         BufferedWriter WriteFile = new BufferedWriter(fw);
         
         for(int i = 0; i < users.size(); i++){
@@ -189,9 +193,9 @@ public class Login extends State   {
             WriteFile.write(line);
             WriteFile.newLine();
         }
-        
+ 
         WriteFile.close();
-        
+               fw.close();
         
         } catch(Exception e){
             System.out.println("Error occured.");

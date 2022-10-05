@@ -3,10 +3,6 @@
 // Date: 09-25-2022
 package bradenhortonmastery1;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  *
  * @author brade
@@ -27,17 +23,18 @@ public class BradenHortonMastery1 {
         State.login = new Login();
         State.current = State.login;
        
-        
+         
+         
         while(true){
-            
+           
+            State.current.load();
         State.current.enter();
-        State.current.load();
+        
         State.current.update();
         State.current.save();
-        
-         
         }
-       
+               
+    
     }
     
 }
