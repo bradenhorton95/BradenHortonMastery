@@ -4,6 +4,10 @@
  */
 package bradenhortonmastery1;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.*;
 import java.util.ArrayList;
 
@@ -11,17 +15,13 @@ import java.util.ArrayList;
  *
  * @author brade
  */
-public class Login extends State {
-
+public class Login extends State   {
+       
     // i used the customer class here for the employee and manager since the person class had the loginName and password member variables
-    ArrayList<Customer> users = new ArrayList<>() {
-        {
-            add(new Customer("Emily", "3256548855", "45 valor", "Employee", "password"));
-            add(new Customer("Steven", "7899874465", "23 weaver", "Manager", "password"));
 
-        }
-    };
-
+    
+    ArrayList<Customer> users = new ArrayList<Customer>();
+  
     public static String username;
 
     void enter() {
@@ -123,6 +123,7 @@ public class Login extends State {
                         }
 
                     }
+                   
                      if(!(passUp && special)){
                          System.out.println("INVALID PASSWORD FORMAT");
                         System.out.println("You must you atleast one upper case character and one special character");
@@ -147,6 +148,56 @@ public class Login extends State {
                 System.exit(0);
                 break;
 
+                
+                
+                
         }
     }
+    
+    
+    void load(){
+        
+        try{
+            
+            FileReader fr = new FileReader("users.txt");
+            BufferedReader ReadFile = new BufferedReader(fr);
+            
+          while((ReadFile.readLine()) != null){
+            String line = ReadFile.readLine();
+            String[] members = line.split(",");
+            users.add(new Customer(members[0], members[1], members[2], members[3], members[4]));
+           }
+            
+            
+            
+        }
+        catch(Exception e){
+            System.out.println("An Error Has Occured.");
+        }
+        
+    }
+    
+    void save(){
+        
+        try {
+        FileWriter fw = new FileWriter("users.txt");
+        BufferedWriter WriteFile = new BufferedWriter(fw);
+        
+        for(int i = 0; i < users.size(); i++){
+            String line = users.get(i).name + "," + users.get(i).phone + "," + users.get(i).address + "," + users.get(i).loginName + "," + users.get(i).password;
+            WriteFile.write(line);
+            WriteFile.newLine();
+        }
+        
+        
+        
+        
+        } catch(Exception e){
+            System.out.println("Error occured.");
+        }
+        
+    }
+    
+    
+    
 }
