@@ -26,11 +26,18 @@ public class BradenHortonMastery1 {
         State.employee = new EmployeeView();
         State.login = new Login();
         State.current = State.login;
-        while(true){
-        State.current.enter();
-        State.current.update();
-        }
+       
         
+        while(true){
+            
+        State.current.enter();
+        State.current.load();
+        State.current.update();
+        State.current.save();
+        
+         
+        }
+       
     }
     
 }

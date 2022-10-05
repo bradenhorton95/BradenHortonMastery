@@ -12,4 +12,6 @@ public abstract class State {
     static State customer, employee, manager, login, current;
     void enter(){}
     void update(){}
+    void load(){};
+    void save(){};
 }

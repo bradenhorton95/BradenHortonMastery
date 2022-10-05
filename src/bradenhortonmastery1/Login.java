@@ -20,12 +20,12 @@ public class Login extends State   {
     // i used the customer class here for the employee and manager since the person class had the loginName and password member variables
 
     
-    ArrayList<Customer> users = new ArrayList<Customer>();
-  
+    ArrayList<Customer> users = new ArrayList<>();
+   
     public static String username;
 
     void enter() {
-
+        
         System.out.println("1. Login");
         System.out.println("2. Register");
         System.out.println("3. Continue as Guest");
@@ -162,17 +162,18 @@ public class Login extends State   {
             FileReader fr = new FileReader("users.txt");
             BufferedReader ReadFile = new BufferedReader(fr);
             
-          while((ReadFile.readLine()) != null){
+          while(ReadFile.readLine() != null){
             String line = ReadFile.readLine();
             String[] members = line.split(",");
             users.add(new Customer(members[0], members[1], members[2], members[3], members[4]));
            }
-            
+          fr.close();
+            ReadFile.close();
             
             
         }
         catch(Exception e){
-            System.out.println("An Error Has Occured.");
+            e.printStackTrace();
         }
         
     }
@@ -180,7 +181,7 @@ public class Login extends State   {
     void save(){
         
         try {
-        FileWriter fw = new FileWriter("users.txt");
+        FileWriter fw = new FileWriter("users.txt", true);
         BufferedWriter WriteFile = new BufferedWriter(fw);
         
         for(int i = 0; i < users.size(); i++){
@@ -189,7 +190,7 @@ public class Login extends State   {
             WriteFile.newLine();
         }
         
-        
+        WriteFile.close();
         
         
         } catch(Exception e){
