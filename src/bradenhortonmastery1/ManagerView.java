@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package bradenhortonmastery1;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.*;
 import java.util.ArrayList;
 
@@ -12,14 +17,10 @@ import java.util.ArrayList;
  */
 
 public class ManagerView extends State{
-     ArrayList<TravelAgencyEmployee> emp = new ArrayList<>(){{
-       add(new TravelAgencyEmployee("Khalie benjamin", "234-567-8910", "75 traverse lane", false, "06-28-2012", 73, 60000 ));
-        add(new TravelAgencyEmployee("Bradley Cooper", "324-432-3523", "0010 carry dr", true, "07-01-2009", 34, 85500 ));
-     
-     
-     }};
+     ArrayList<TravelAgencyEmployee> emp = new ArrayList<>();
     
     void enter(){
+       
         System.out.println("1. Add Employee");
         System.out.println("2. Remove Employee");
         System.out.println("3. List Employees");
@@ -93,4 +94,69 @@ public class ManagerView extends State{
         }
         
     }
+    
+       void load(){
+        
+        try{
+            
+            boolean man;
+          
+            FileReader fr = new FileReader("employees.txt");
+            BufferedReader ReadFile = new BufferedReader(fr);
+           String line = "";
+           String[] members;
+          
+          while((line = ReadFile.readLine()) != null){
+           
+            members = line.split(",");
+               int empID; double salary;
+              empID = Integer.parseInt(members[5]);
+              salary = Double.parseDouble(members[6]);
+             if(members[3].equalsIgnoreCase("true")){
+                 man = true;
+             }
+             else{
+                 man = false;
+             }
+            emp.add(new TravelAgencyEmployee(members[0], members[1], members[2], man, members[4], empID, salary));
+            
+             
+           }
+       
+          ReadFile.close();
+          fr.close();
+       
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+       
+       
+           void save(){
+        
+        try {
+           
+        FileWriter fw = new FileWriter("employees.txt", false);
+        BufferedWriter WriteFile = new BufferedWriter(fw);
+        
+        for(int i = 0; i < emp.size(); i++){
+            String line = emp.get(i).name + "," + emp.get(i).phone + "," + emp.get(i).address + "," + emp.get(i).isAManager + "," + emp.get(i).hireDate + "," + emp.get(i).idNumber + "," + emp.get(i).salary;
+            WriteFile.append(line);
+            WriteFile.newLine();
+        }
+ 
+        WriteFile.close();
+               fw.close();
+        
+        } catch(Exception e){
+            System.out.println("Error occured.");
+        }
+        
+    }
+    
+    
+    
 }

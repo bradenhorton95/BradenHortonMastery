@@ -178,7 +178,7 @@ public class Login extends State   {
        
           ReadFile.close();
           fr.close();
-          file.delete();
+         
             
         }
         catch(Exception e){
