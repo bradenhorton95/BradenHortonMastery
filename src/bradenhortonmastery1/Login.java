@@ -152,6 +152,9 @@ public class Login extends State   {
                 
                 
                 
+                
+                
+                
         }
     }
     
@@ -164,15 +167,18 @@ public class Login extends State   {
             BufferedReader ReadFile = new BufferedReader(fr);
            String line = "";
            String[] members;
+           users.clear();
           while((line = ReadFile.readLine()) != null){
              
             members = line.split(",");
             users.add(new Customer(members[0], members[1], members[2], members[3], members[4]));
-             line = ReadFile.readLine();
+            
+             
            }
        
           ReadFile.close();
           fr.close();
+          file.delete();
             
         }
         catch(Exception e){
@@ -184,13 +190,13 @@ public class Login extends State   {
     void save(){
         
         try {
-            File file = new File("Users.txt");
-        FileWriter fw = new FileWriter(file);
+           
+        FileWriter fw = new FileWriter("users.txt", false);
         BufferedWriter WriteFile = new BufferedWriter(fw);
         
         for(int i = 0; i < users.size(); i++){
             String line = users.get(i).name + "," + users.get(i).phone + "," + users.get(i).address + "," + users.get(i).loginName + "," + users.get(i).password;
-            WriteFile.write(line);
+            WriteFile.append(line);
             WriteFile.newLine();
         }
  
