@@ -21,7 +21,7 @@ public abstract class  Lodging {
         maxOccupants = 0;
         basePricePerNight = 0;
     }
-    public Lodging(String n, String p, String a, int m, int b){
+    public Lodging(String n, String p, String a, int m, double b){
         name =n; phone =p; address = a; maxOccupants = m; basePricePerNight = b;
     }
 

@@ -15,7 +15,7 @@ public class House extends Lodging {
         numberOfBedrooms = 0;
         
     }
-    public House(String n, String p, String a, int m, int b, int num){
+    public House(String n, String p, String a, int m, double b, int num){
         super(n,p,a,m,b);
         numberOfBedrooms = num;
     }

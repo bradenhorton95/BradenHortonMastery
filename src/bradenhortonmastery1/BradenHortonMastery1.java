@@ -27,9 +27,9 @@ public class BradenHortonMastery1 {
          
         while(true){
            
-           
+            State.current.load();
         State.current.enter();
-         State.current.load();
+        
         State.current.update();
        
          State.current.save();

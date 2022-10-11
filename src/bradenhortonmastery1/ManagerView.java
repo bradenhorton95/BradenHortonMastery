@@ -94,18 +94,18 @@ public class ManagerView extends State{
         }
         
     }
-    
+    File path = new File("employees.txt");
        void load(){
-        
+       
         try{
             
             boolean man;
           
-            FileReader fr = new FileReader("employees.txt");
+            FileReader fr = new FileReader(path);
             BufferedReader ReadFile = new BufferedReader(fr);
            String line = "";
            String[] members;
-          
+          emp.clear();
           while((line = ReadFile.readLine()) != null){
            
             members = line.split(",");
@@ -139,7 +139,7 @@ public class ManagerView extends State{
         
         try {
            
-        FileWriter fw = new FileWriter("employees.txt", false);
+        FileWriter fw = new FileWriter(path);
         BufferedWriter WriteFile = new BufferedWriter(fw);
         
         for(int i = 0; i < emp.size(); i++){
@@ -156,6 +156,9 @@ public class ManagerView extends State{
         }
         
     }
+           
+           
+        
     
     
     

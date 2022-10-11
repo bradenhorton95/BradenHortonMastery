@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package bradenhortonmastery1;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.*;
 
 /**
@@ -11,15 +16,10 @@ import java.util.*;
  */
 
 public class EmployeeView extends State{
-    public static  ArrayList<Lodging> lodge =  new ArrayList<>(){{
-    add(new House("The Lamore Hosue", "748-938-0990","34 traveler", 5, 125, 2 ) );
-        add( new House("The beach house", "745-857-3774", "345 grover", 8, 234, 4));
-        add( new Hotel("The Marriot", "345-345-9586","34 Cramer",4, 123, 34, 12.99, true  ));
-        add( new Hotel("Value Inn", "785-845-7883","746 Harrow",2, 78, 12, 4.99, false  ));
+    public static  ArrayList<Lodging> lodge =  new ArrayList<>();
     
     
     
-    }};
          String name, phone, address;
          int occupants, basePrice, vacancies, numOfRooms;
          double parkFee;
@@ -120,6 +120,69 @@ public class EmployeeView extends State{
            
                 
         }
+    }
+       void load(){
+        
+        try{
+            File file = new File("lodges.txt");
+            FileReader fr = new FileReader(file);
+            BufferedReader ReadFile = new BufferedReader(fr);
+           String line = "";
+           String[] members;
+           lodge.clear();
+          while((line = ReadFile.readLine()) != null){
+             
+            members = line.split(",");
+            if(members[0].equalsIgnoreCase("Hotel")){
+                int occ = Integer.parseInt(members[3]);
+             int vac = Integer.parseInt(members[5]);
+             double base = Double.parseDouble(members[4]);
+             double park = Double.parseDouble(members[6]);
+             boolean breakfast = Boolean.parseBoolean(members[7]);
+                lodge.add(new Hotel(members[0], members[1], members[2], occ, base, vac, park, breakfast));
+            }
+            else {
+                 int occ = Integer.parseInt(members[3]);
+                 double base;
+                base = Double.parseDouble(members[4]);
+                 int room = Integer.parseInt(members[5]);
+                lodge.add(new House(members[0], members[1], members[2], occ, base, room));
+            }
+             
+           }
+       
+          ReadFile.close();
+          fr.close();
+         
+            
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
+       void save(){
+        
+        try {
+           
+        FileWriter fw = new FileWriter("lodges.txt", false);
+        BufferedWriter WriteFile = new BufferedWriter(fw);
+      
+        for(int i = 0; i < lodge.size(); i++){
+          
+             String   line = lodge.get(i).name + "," + lodge.get(i).phone + "," + lodge.get(i).address + "," + lodge.get(i).maxOccupants + "," + lodge.get(i).basePricePerNight ;
+         
+            WriteFile.append(line);
+            WriteFile.newLine();
+        }
+ 
+        WriteFile.close();
+             
+        
+        } catch(Exception e){
+            System.out.println("Error occured.");
+        }
+        
     }
     
     

@@ -20,7 +20,7 @@ public class Hotel extends Lodging{
         hasFreeBreakfast = false;
         
     }
-    public Hotel(String n, String p, String a, int m, int b, int v, double f, boolean free){
+    public Hotel(String n, String p, String a, int m, double b, int v, double f, boolean free){
         super(n,p,a,m,b);
         vacancies = v; parkingFee = f; hasFreeBreakfast = free;
     }
