@@ -24,17 +24,25 @@ public class BradenHortonMastery1 {
         State.current = State.login;
        
          State.login.load();
+<<<<<<< HEAD
          State.manager.load();
+=======
+         State.customer.load();
+>>>>>>> 11be63527ae9d36b9f62156016d51161796c1696
          State.employee.load();
          
           
         while(true){
            
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             
 =======
            State.current.load();
 >>>>>>> Stashed changes
+=======
+          
+>>>>>>> 11be63527ae9d36b9f62156016d51161796c1696
         State.current.enter();
         
         State.current.update();
@@ -42,7 +50,7 @@ public class BradenHortonMastery1 {
          State.current.save();
         
         }
-               
+             
     
     }
     

@@ -105,7 +105,7 @@ public class ManagerView extends State{
             BufferedReader ReadFile = new BufferedReader(fr);
            String line = "";
            String[] members;
-          emp.clear();
+         
           while((line = ReadFile.readLine()) != null){
            
             members = line.split(",");
