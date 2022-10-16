@@ -27,10 +27,14 @@ public class BradenHortonMastery1 {
          State.manager.load();
          State.employee.load();
          
-         
+          
         while(true){
            
+<<<<<<< Updated upstream
             
+=======
+           State.current.load();
+>>>>>>> Stashed changes
         State.current.enter();
         
         State.current.update();

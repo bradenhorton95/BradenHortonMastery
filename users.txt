@@ -1,1 +1,6 @@
+<<<<<<< Updated upstream
 Manag,dsklfj,sdklfj,Manager,Password!
+=======
+Manager,lsdkjf,lsdkjf,Managedr,Password!
+Manager,lsdkjf,lsdkjf,Managedr,Password!
+>>>>>>> Stashed changes

@@ -166,8 +166,12 @@ public class Login extends State   {
             FileReader fr = new FileReader(file);
             BufferedReader ReadFile = new BufferedReader(fr);
            String line = "";
+<<<<<<< Updated upstream
            String[] members;
            users.clear();
+=======
+           String[] members = new String[5];
+>>>>>>> Stashed changes
           while((line = ReadFile.readLine()) != null){
              
             members = line.split(",");
@@ -177,6 +181,7 @@ public class Login extends State   {
            }
        
           ReadFile.close();
+          
           fr.close();
          
             
@@ -196,8 +201,13 @@ public class Login extends State   {
         
         for(int i = 0; i < users.size(); i++){
             String line = users.get(i).name + "," + users.get(i).phone + "," + users.get(i).address + "," + users.get(i).loginName + "," + users.get(i).password;
+<<<<<<< Updated upstream
             WriteFile.append(line);
             WriteFile.newLine();
+=======
+            WriteFile.append(line + "\r\n");
+            
+>>>>>>> Stashed changes
         }
  
         WriteFile.close();
