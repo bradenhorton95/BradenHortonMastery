@@ -67,7 +67,7 @@ public class ManagerView extends State{
                 System.out.println("Choose the employee you want to remove");
                 int remove = s.nextInt();
                 emp.remove(remove - 1);
-                System.out.println("this employee has been removed");
+                System.out.println("This employee has been removed");
                 break;
             case "3":
                    for(int j = 0; j < emp.size(); j++){
@@ -94,14 +94,14 @@ public class ManagerView extends State{
         }
         
     }
-    File path = new File("employees.txt");
+
        void load(){
-       
+          
         try{
             
             boolean man;
           
-            FileReader fr = new FileReader(path);
+            FileReader fr = new FileReader("employees.txt");
             BufferedReader ReadFile = new BufferedReader(fr);
            String line = "";
            String[] members;
@@ -139,13 +139,14 @@ public class ManagerView extends State{
         
         try {
            
-        FileWriter fw = new FileWriter(path);
+        FileWriter fw = new FileWriter("employees.txt", false);
         BufferedWriter WriteFile = new BufferedWriter(fw);
         
         for(int i = 0; i < emp.size(); i++){
             String line = emp.get(i).name + "," + emp.get(i).phone + "," + emp.get(i).address + "," + emp.get(i).isAManager + "," + emp.get(i).hireDate + "," + emp.get(i).idNumber + "," + emp.get(i).salary;
             WriteFile.append(line);
             WriteFile.newLine();
+        
         }
  
         WriteFile.close();

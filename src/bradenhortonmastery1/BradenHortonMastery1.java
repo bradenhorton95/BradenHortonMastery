@@ -23,11 +23,14 @@ public class BradenHortonMastery1 {
         State.login = new Login();
         State.current = State.login;
        
+         State.login.load();
+         State.manager.load();
+         State.employee.load();
          
          
         while(true){
            
-            State.current.load();
+            
         State.current.enter();
         
         State.current.update();

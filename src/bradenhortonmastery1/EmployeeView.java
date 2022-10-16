@@ -133,7 +133,7 @@ public class EmployeeView extends State{
           while((line = ReadFile.readLine()) != null){
              
             members = line.split(",");
-            if(members[0].equalsIgnoreCase("Hotel")){
+            if(members[0].contains("Hotel")){
                 int occ = Integer.parseInt(members[3]);
              int vac = Integer.parseInt(members[5]);
              double base = Double.parseDouble(members[4]);
